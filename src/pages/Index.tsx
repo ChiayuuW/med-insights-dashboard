@@ -5,6 +5,7 @@ import { KPICard } from "@/components/dashboard/KPICard";
 import { SpendingBarChart } from "@/components/dashboard/SpendingBarChart";
 import { TrendLineChart } from "@/components/dashboard/TrendLineChart";
 import { TopStatesTable } from "@/components/dashboard/TopStatesTable";
+import { USHeatMap } from "@/components/dashboard/USHeatMap";
 import { FilterBar } from "@/components/dashboard/FilterBar";
 import {
   allStateData,
@@ -183,8 +184,21 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Top States Table */}
+            {/* US Heat Map */}
             <div className="bg-card rounded-xl border border-border p-6 opacity-0 animate-fade-in" style={{ animationDelay: "600ms" }}>
+              <div className="mb-4">
+                <h2 className="text-lg font-semibold text-foreground">
+                  Year-over-Year Spending Change by State
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Comparing {selectedYear} vs {selectedYear - 1} • Green = Higher, Red = Lower
+                </p>
+              </div>
+              <USHeatMap data={filteredData} previousData={previousYearData} />
+            </div>
+
+            {/* Top States Table */}
+            <div className="bg-card rounded-xl border border-border p-6 opacity-0 animate-fade-in" style={{ animationDelay: "700ms" }}>
               <div className="mb-4">
                 <h2 className="text-lg font-semibold text-foreground">
                   Top 10 States by Total Spending
