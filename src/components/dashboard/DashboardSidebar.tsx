@@ -20,14 +20,17 @@ import {
   Database,
   FileText,
   HelpCircle,
+  Map,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { NavLink } from "@/components/NavLink";
 
 const mainNavItems = [
-  { title: "Overview", icon: LayoutDashboard, active: true },
-  { title: "Spending Analysis", icon: BarChart3 },
-  { title: "Trends", icon: TrendingUp },
-  { title: "State Comparison", icon: Table2 },
+  { title: "Overview", icon: LayoutDashboard, href: "/" },
+  { title: "Forecast Map", icon: Map, href: "/forecast" },
+  { title: "Spending Analysis", icon: BarChart3, href: "#" },
+  { title: "Trends", icon: TrendingUp, href: "#" },
+  { title: "State Comparison", icon: Table2, href: "#" },
 ];
 
 const dataNavItems = [
@@ -75,17 +78,16 @@ export function DashboardSidebar() {
             <SidebarMenu>
               {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className={cn(
-                      "w-full rounded-lg transition-all duration-200",
-                      item.active
-                        ? "bg-primary/10 text-primary hover:bg-primary/20"
-                        : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                    )}
-                    tooltip={item.title}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    {!isCollapsed && <span>{item.title}</span>}
+                  <SidebarMenuButton asChild tooltip={item.title}>
+                    <NavLink
+                      to={item.href}
+                      end
+                      className="w-full rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200"
+                      activeClassName="bg-primary/10 text-primary hover:bg-primary/20"
+                    >
+                      <item.icon className="h-5 w-5" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
