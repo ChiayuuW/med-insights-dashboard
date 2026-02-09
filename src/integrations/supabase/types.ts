@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      state_quarter_forecast: {
+        Row: {
+          "2024Q1": number | null
+          "2024Q2": number | null
+          "2024Q3": number | null
+          "2024Q4": number | null
+          created_at: string
+          id: string
+          pred_q1: number | null
+          pred_q2: number | null
+          pred_q3: number | null
+          pred_q4: number | null
+          state_code: string
+        }
+        Insert: {
+          "2024Q1"?: number | null
+          "2024Q2"?: number | null
+          "2024Q3"?: number | null
+          "2024Q4"?: number | null
+          created_at?: string
+          id?: string
+          pred_q1?: number | null
+          pred_q2?: number | null
+          pred_q3?: number | null
+          pred_q4?: number | null
+          state_code: string
+        }
+        Update: {
+          "2024Q1"?: number | null
+          "2024Q2"?: number | null
+          "2024Q3"?: number | null
+          "2024Q4"?: number | null
+          created_at?: string
+          id?: string
+          pred_q1?: number | null
+          pred_q2?: number | null
+          pred_q3?: number | null
+          pred_q4?: number | null
+          state_code?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
