@@ -28,19 +28,19 @@ import { NavLink } from "@/components/NavLink";
 const mainNavItems = [
   { title: "Overview", icon: LayoutDashboard, href: "/" },
   { title: "Forecast Map", icon: Map, href: "/forecast" },
-  { title: "Spending Analysis", icon: BarChart3, href: "#" },
-  { title: "Trends", icon: TrendingUp, href: "#" },
-  { title: "State Comparison", icon: Table2, href: "#" },
+  { title: "Spending Analysis", icon: BarChart3, href: "/spending" },
+  { title: "Trends", icon: TrendingUp, href: "/trends" },
+  { title: "State Comparison", icon: Table2, href: "/comparison" },
 ];
 
 const dataNavItems = [
-  { title: "Data Sources", icon: Database },
-  { title: "Reports", icon: FileText },
+  { title: "Data Sources", icon: Database, href: "/data-sources" },
+  { title: "Reports", icon: FileText, href: "/reports" },
 ];
 
 const supportNavItems = [
-  { title: "Settings", icon: Settings },
-  { title: "Help", icon: HelpCircle },
+  { title: "Settings", icon: Settings, href: "/settings" },
+  { title: "Help", icon: HelpCircle, href: "/help" },
 ];
 
 export function DashboardSidebar() {
@@ -103,12 +103,16 @@ export function DashboardSidebar() {
             <SidebarMenu>
               {dataNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="w-full rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200"
-                    tooltip={item.title}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    {!isCollapsed && <span>{item.title}</span>}
+                  <SidebarMenuButton asChild tooltip={item.title}>
+                    <NavLink
+                      to={item.href}
+                      end
+                      className="w-full rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200"
+                      activeClassName="bg-primary/10 text-primary hover:bg-primary/20"
+                    >
+                      <item.icon className="h-5 w-5" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -124,12 +128,16 @@ export function DashboardSidebar() {
             <SidebarMenu>
               {supportNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="w-full rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200"
-                    tooltip={item.title}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    {!isCollapsed && <span>{item.title}</span>}
+                  <SidebarMenuButton asChild tooltip={item.title}>
+                    <NavLink
+                      to={item.href}
+                      end
+                      className="w-full rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200"
+                      activeClassName="bg-primary/10 text-primary hover:bg-primary/20"
+                    >
+                      <item.icon className="h-5 w-5" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
